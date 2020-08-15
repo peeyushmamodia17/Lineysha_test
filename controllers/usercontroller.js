@@ -1,6 +1,8 @@
+//add all the schema
 const userSchema=require("../models/user_schema");
 const bookingSchema=require("../models/booking_schema");
 
+//it return the user registration page
 module.exports.kyc=function(req,res){
     return res.render('user_register',{
         title:"Kyc Page"
@@ -8,14 +10,17 @@ module.exports.kyc=function(req,res){
 }
 
 
+//it will create the user 
 module.exports.create=async function(req,res){
     try{
         console.log(req.body);
         var str=req.body.lname;
+        //here we check surname start with A
         var n=str.startsWith("A");
         let user=await userSchema.findOne({email:req.body.email});
         if(n && !user){
             var name=req.body.fname+ " " + req.body.lname;
+            //create the user
             await userSchema.create({
                 name:name,
                 email:req.body.email,
@@ -38,6 +43,8 @@ module.exports.create=async function(req,res){
    
 }
 
+
+//find the detail of particular user
 module.exports.detail=async function(req,res){
     try{
         console.log(req.params.id);
@@ -52,14 +59,18 @@ module.exports.detail=async function(req,res){
     }
 }
 
+//it will render booking page
 module.exports.booking=function(req,res){
     return res.render("booking",{
         title:"Booking page"
     })
 }
 
+
+//it will create the booking of two user
 module.exports.create_booking=async function(req,res){
     try{
+        //use for time difference
         function parseTime(cTime)
         {
             if (cTime == '') return null;
@@ -73,11 +84,15 @@ module.exports.create_booking=async function(req,res){
         console.log(req.body);
         let user1=await userSchema.findOne({name:req.body.user1});
         let user2=await userSchema.findOne({name:req.body.user2});
+        //find time diiference
         var time1=parseTime(req.body.time1);
         var time2=parseTime(req.body.time2);
         let value= (time1 - time2)/(1000*60);
         console.log(value);
+
+        //if both user are in our database then go further
         if(user1 && user2){
+            //if the both user are not foreign then go further
             if(user1.country=="foreign" && user2.country!="foreign" || user1.country!="foreign" && user2.country=="foreign" ){
                 if(-(value)<=60){   
                     await bookingSchema.create({
@@ -108,7 +123,7 @@ module.exports.create_booking=async function(req,res){
 }
 
 
-
+//show all the bookings
 module.exports.show=async function(req,res){
     try{
         let bookings=await bookingSchema.find();

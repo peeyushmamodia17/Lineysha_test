@@ -1,5 +1,6 @@
 const mongoose=require('mongoose');
 
+//it is a booking schema
 const bookingSchema=new mongoose.Schema({
     user1:{
         type:String,

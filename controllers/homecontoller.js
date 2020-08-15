@@ -1,5 +1,8 @@
+//add user schema
 const userSchema=require("../models/user_schema");
 
+
+//get the home page with all the users 
 module.exports.home=async function(req,res){
    try{
        let users=await userSchema.find({});

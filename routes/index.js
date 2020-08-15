@@ -3,8 +3,10 @@ const router=express.Router();
 
 const homecontroller=require('../controllers/homecontoller');
 
+//router for home page
 router.get("/",homecontroller.home);
-router.use("/user",require("./user"));
-router.use("/booking",require("./user"));
+//it will go to kyc service page when /user come
+router.use("/user",require("./kycservice"));
+router.use("/booking",require("./calendar"));
 
 module.exports=router;
