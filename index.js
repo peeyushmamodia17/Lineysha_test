@@ -5,6 +5,7 @@ const app=express();
 const port=8000;
 const mongoose=require("./config/mongoose");
 const expressLayouts=require('express-ejs-layouts');
+const session=require('express-session');
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
 const middleware=require('./config/middleware');
@@ -25,6 +26,20 @@ app.use(express.static('assets'));
 app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
+
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
+
+app.use(session({
+    name:'codieal',
+    //todo change the secret before deployment
+    secret:'peeyush',
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*60*100)
+    },
+}));
 
 app.use(flash());
 app.use(middleware.setFlash);

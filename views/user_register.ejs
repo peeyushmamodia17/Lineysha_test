@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 
+  <link rel="stylesheet" type="text/css" href="/css/user.css">
+<div class="container">
+    <div class="container5" style="margin-bottom: 100px;">
+    <div class="card">
+        <div class="card-header">
+            <h3>User Registration</h3>
+        </div>
+        <div class="card-body">
+            <form action="/user/create" method="POST">
+            <input type="text" name="fname" placeholder="Enter First Name" required id="name">
+            <input type="text" name="lname" placeholder="Enter Last Name" required id="name">
+            <input type="email" name="email" placeholder="Enter Email" required class="username1">
+            <label for="country">Choose a Country:</label>
+            <select name="country" id="country">
+                <option value="india">India</option>
+                <option value="foreign">Foreign</option>
+            </select>
+            <input type="Checkbox" name="checked" id="check">Remember Me</input>
+            <span>
+                <input type="submit" value="Register" id="content1">
+                <!-- <a class="btn" id="content1" href="#">Login</a> -->
+            </span>
+
+        </form>
+        </div>
+    </div>
+</div>
+</div>

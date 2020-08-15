@@ -1,0 +1,31 @@
+.home-body{
+    text-align: center;
+}
+.user-list{
+    
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+} 
+    #user{
+        display: flex;
+    }
+    #count{
+        margin-right: 15px;
+        margin-left: 90px;
+    }
+    #user-link{
+        margin-left:200px;
+        margin-top: 12px;
+    }
+    .shift{
+        padding: 0px 10px;
+    }
+    #button{
+        padding: 5px 10px;
+        background-color: antiquewhite;
+        color: darkcyan;
+        text-decoration: none;
+        margin-left: 20px;
+    }

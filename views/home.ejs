@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="/css/home.css">
+<a href="/booking/show" id="button">Show all bookings</a>
+<div class="home-body">
+    <h1>Welcome Home Page</h1>
+
+    <h2>Identity Service</h2>
+    <h4>User Listing</h4>
+
+    <div class="user-list">
+        <%var count=1;%>
+        <%for(user of users){%>
+            <div id="user">
+                <p id="count"><%=count%></p>
+                <p><%=user.name%></p>
+                <a href="/user/detail/<%=user.id%>" id="user-link">User Detail</a>
+                <%count++;%>
+            </div>
+        <%}%>
+    </div>
+    </div>
+
